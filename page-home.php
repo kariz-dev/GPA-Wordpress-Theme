@@ -11,19 +11,21 @@ get_header(); ?>
     <?php if (have_rows("banner")):
       while (have_rows("banner")):
         the_row();
-        $banner_bg_dekstop = get_sub_field("banner_bg_dekstop");
-        $banner_bg_mobile = get_sub_field("banner_bg_mobile");
-        $banner_image = get_sub_field("banner_image");
-        $banner_content = get_sub_field("banner_content");
+        $banner_bg_dekstop = get_sub_field("banner_background_desktop");
+        $banner_bg_mobile = get_sub_field("banner_background_mobile");
+        $banner_logo = get_sub_field("banner_logo");
+        $banner_heading = get_sub_field("banner_heading");
+        $banner_subheading = get_sub_field("banner_subheading");
+        $banner_desc = get_sub_field("banner_desc");
       endwhile;
     endif; ?>
     <div class="banner" style="background: url('<?php echo $banner_bg_dekstop[
       "url"
     ]; ?>'); background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <img src="<?php echo $banner_image["url"]; ?>" alt="" />
-        <h1><?php echo $banner_content["banner_content_heading"]; ?></h1>
-        <h1><?php echo $banner_content["banner_content_subheading"]; ?></h1>
-        <p><?php echo $banner_content["banner_content_desc"]; ?></p>
+        <img src="<?php echo $banner_logo["url"]; ?>" alt="<?php echo $banner_logo["alt"]; ?>" />
+        <h1><?php echo $banner_heading; ?></h1>
+        <h1><?php echo $banner_subheading; ?></h1>
+        <p><?php echo $banner_desc; ?></p>
     </div>
 
     <!-- About Us -->
@@ -42,7 +44,7 @@ get_header(); ?>
                 <p><?php echo $about_desc; ?></p>
             </div>
             <div class="about__content__image col">
-                <img src="<?php echo $about_image["url"]; ?>" alt="" />
+                <img src="<?php echo $about_image["url"]; ?>" alt="<?php echo $about_image['alt'] ;?>" />
             </div>
         </div>
     </div>
@@ -56,45 +58,40 @@ get_header(); ?>
       endwhile;
     endif; ?>
 
-    <div class="testimonial__carousel">
-        <h2><?php echo $testimonial_heading; ?></h2>
-        <!-- Slider main container -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
+    <?php 
+      $testimonial_args = array(
+        'post_type' => 'testimonial',
+        'order' => 'ASC'
+      );
 
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-          </div>
-
-          <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-          
-        <div class="swiper-pagination"></div>
-        </div>
-
-        
-
-    </div>
+      if (have_posts()) {
+        $testimonial_query = new WP_Query($testimonial_args);
+        if ($testimonial_query->have_posts()) {
+          echo '<div class="testimonial__carousel">';
+          echo '<h2>' . $testimonial_heading . '</h2>';
+          echo '<div class="swiper mySwiper">';
+          echo '<div class="swiper-wrapper">';
+          while ($testimonial_query->have_posts()) {
+            $testimonial_query->the_post();
+            echo '<div class="swiper-slide">';
+            echo '<div class="testimonial__carousel__content">';
+            echo '<p>' . get_the_content() . '</p>';
+            echo '<div class="testimonial__carousel__content__image">';
+            echo get_the_post_thumbnail();
+            echo '</div>';
+            echo '<div class="testimonial__carousel__content__name">';
+            echo '<h3>' . get_the_title() . '</h3>';
+            echo '<p>' . get_field('testimonial_designation') . '</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+        }
+      }
+    ;?>
 
     <!-- Article Carousel -->
     <?php

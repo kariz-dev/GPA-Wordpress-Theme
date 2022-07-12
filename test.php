@@ -48,3 +48,42 @@ endwhile;
         $my_articles_image = get_sub_field("my_articles_image");
       endwhile;
     endif; ?>
+
+
+<!-- content carousel -->
+<div class="testimonial__carousel">
+        <h2><?php echo $testimonial_heading; ?></h2>
+        <!-- Slider main container -->
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+            </div>
+
+            <div class="swiper-slide">
+              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+            </div>
+          </div>
+          
+        <div class="swiper-pagination"></div>
+        </div>
+
+        
+
+    </div>
