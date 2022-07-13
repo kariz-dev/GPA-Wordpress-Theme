@@ -49,6 +49,41 @@ endwhile;
       endwhile;
     endif; ?>
 
+<!-- Loop Post -->
+<?php 
+      $testimonial_args = array(
+        'post_type' => 'testimonial',
+        'order' => 'ASC'
+      );
+
+      if (have_posts()) {
+        $testimonial_query = new WP_Query($testimonial_args);
+        if ($testimonial_query->have_posts()) {
+          echo '<div class="testimonial__carousel">';
+          echo '<h2>' . $testimonial_heading . '</h2>';
+          echo '<div class="swiper mySwiper">';
+          echo '<div class="swiper-wrapper">';
+          while ($testimonial_query->have_posts()) {
+            $testimonial_query->the_post();
+            echo '<div class="swiper-slide">';
+            echo '<div class="testimonial__carousel__content">';
+            // echo '<p>' . get_the_content() . '</p>';
+            echo '<div class="testimonial__carousel__content__image">';
+            // echo get_the_post_thumbnail();
+            echo '</div>';
+            echo '<div class="testimonial__carousel__content__name">';
+            echo '<h3>' . get_the_title() . '</h3>';
+            echo '<p>' . get_field('testimonial_designation') . '</p>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+          }
+          echo '</div>';
+          echo '</div>';
+          echo '</div>';
+        }
+      }
+    ;?>
 
 <!-- content carousel -->
 <div class="testimonial__carousel">
