@@ -62,7 +62,8 @@ get_header(); ?>
                       </a>
                     </div>
                 <?php endforeach; ?>
-            </div>
+              </div>
+            <div class="swiper-pagination"></div>
         </div>
       <?php wp_reset_postdata(); ?>
     <?php endif; ?>
