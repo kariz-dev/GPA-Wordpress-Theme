@@ -1,0 +1,42 @@
+.about {
+  margin-top: 5%;
+
+  &__heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 22px;
+      line-height: 1.4em;
+    }
+  }
+
+  &__content {
+    &__desc {
+      p {
+        color: #fff !important;
+        text-align: right;
+
+        @media only screen and (max-width: 600px) {
+          margin-top: 20px;
+          text-align: center;
+        }
+      }
+    }
+
+    &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 420px;
+        height: auto;
+
+        @media only screen and (max-width: 600px) {
+          width: 350px;
+        }
+      }
+    }
+  }
+}

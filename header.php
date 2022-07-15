@@ -93,7 +93,7 @@
 							<form class="search-form my-2 my-lg-0" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<div class="input-group">
 									<input type="text" name="s" class="form-control" placeholder="<?php esc_attr_e( 'Search', 'golden-property-awards' ); ?>" title="<?php esc_attr_e( 'Search', 'golden-property-awards' ); ?>" />
-									<button type="submit" name="submit" class="btn btn-outline-secondary"><?php esc_html_e( 'Search', 'golden-property-awards' ); ?></button>
+									<button type="submit" name="submit" class="btn btn-outline-secondary"><?php esc_html_e( '', 'golden-property-awards' ); ?><span class="iconify" data-icon="akar-icons:search"></span></button>
 								</div>
 							</form>
 					<?php

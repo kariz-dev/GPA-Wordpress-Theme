@@ -13,8 +13,9 @@
 @import "../node_modules/bootstrap/scss/functions";
 
 // @import Component
-@import './navbar';
+@import './_navbar.scss';
 @import './_banner.scss';
+@import './_about.scss';
 
 // 2. Include any default variable overrides here: https://getbootstrap.com/docs/5.0/customize/sass
 // Options
@@ -376,33 +377,6 @@ img {
 // ================= //
 
 
-
-
-// About Style
-.about {
-  h1 {
-    color: #fff !important;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  &__content {
-    &__heading {
-      p {
-        color: #fff !important;
-        text-align: right;
-      }
-    }
-
-    &__image {
-      img {
-        width: 350px;
-        height: auto;
-      }
-    }
-  }
-}
-
 h2 {
   color: #ffffff !important;
   text-align: center;
@@ -543,4 +517,17 @@ h2 {
   .gallery .box-gallery .box .content .icons span {
     font-size: 12px;
   }
+}
+
+
+// ================= //
+// hide navbar brand
+.navbar-brand {
+  display: none;
+}
+
+button.navbar-toggler {
+  border: none;
+  background-color: #ffffff52;
+  text-align: right;
 }

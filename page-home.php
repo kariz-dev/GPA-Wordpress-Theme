@@ -34,12 +34,12 @@ get_header(); ?>
       endwhile;
     endif; ?>
     <div class="about">
-      <h1><?php echo $about_heading; ?></h1>
+      <h2 class="about__heading"><?php echo $about_heading; ?></h2>
       <div class="about__content row">
-        <div class="about__content__heading col">
+        <div class="about__content__desc col order-last order-md-first">
           <p><?php echo $about_desc; ?></p>
         </div>
-        <div class="about__content__image col">
+        <div class="about__content__image col order-first order-md-last">
           <img src="<?php echo $about_image["url"]; ?>" alt="<?php echo $about_image['alt'] ;?>" />
         </div>
       </div>
