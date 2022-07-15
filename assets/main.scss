@@ -6,6 +6,9 @@
 
 //@import "../node_modules/bootstrap/scss/bootstrap";
 
+// Font Family
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
 
@@ -182,9 +185,6 @@ img {
 
 /* Main */
 
-#main {
-  margin-top: $spacer;
-}
 
 /* Footer */
 
@@ -192,13 +192,15 @@ img {
   background-color: #fff;
 
   p {
+    font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
     text-align: center;
-    color: rgb(122, 35, 35);
+    color: #ffffff;
   }
 
   .menu-item {
     a {
+      font-family: 'Montserrat', sans-serif;
       &[aria-current="page"] {
         color: $link-hover-color;
       }
@@ -227,8 +229,10 @@ img {
 .author-info {
   margin: 40px 0;
 
+  h1,
   h2,
   h3 {
+    font-family: 'Montserrat', sans-serif;
     margin-top: 0;
   }
 }
@@ -377,6 +381,7 @@ img {
 // About Style
 .about {
   h1 {
+    color: #fff !important;
     text-align: center;
     text-transform: uppercase;
   }
@@ -384,6 +389,7 @@ img {
   &__content {
     &__heading {
       p {
+        color: #fff !important;
         text-align: right;
       }
     }
@@ -398,6 +404,7 @@ img {
 }
 
 h2 {
+  color: #ffffff !important;
   text-align: center;
   text-transform: uppercase;
 }
@@ -413,7 +420,7 @@ h2 {
 .gallery .heading {
   font-size: 40px;
   margin-bottom: 20px;
-  color: #334;
+  color: #fff;
 }
 
 .gallery .box-gallery {
@@ -455,12 +462,12 @@ h2 {
 
 .gallery .box-gallery .box .content h3 {
   font-size: 20px;
-  color: #334;
+  color: #fff;
 }
 
 .gallery .box-gallery .box .content p {
   font-size: 15px;
-  color: #777;
+  color: #ffffff;
   line-height: 2;
   padding: 15px 0;
 }
@@ -468,8 +475,8 @@ h2 {
 .gallery .box-gallery .box .content .btn {
   display: inline-block;
   padding: 10px 30px;
-  border: 1px solid #334;
-  color: #334;
+  border: 1px solid #fff;
+  color: #fff;
   font-size: 16px;
 }
 
@@ -485,7 +492,7 @@ h2 {
   justify-content: space-between;
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 1px solid #334;
+  border-top: 1px solid #fff;
 }
 
 .gallery .box-gallery .box .content .icons span {
@@ -502,8 +509,8 @@ h2 {
   margin-top: 20px;
   display: inline-block;
   padding: 13px 30px;
-  border: 1px solid #334;
-  color: #334;
+  border: 1px solid #fff;
+  color: #fff;
   font-size: 16px;
   background-color: #fff;
   cursor: pointer;

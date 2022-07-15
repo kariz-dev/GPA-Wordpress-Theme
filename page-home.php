@@ -11,21 +11,17 @@ get_header(); ?>
     <?php if (have_rows("banner")):
       while (have_rows("banner")):
         the_row();
-        $banner_bg_dekstop = get_sub_field("banner_background_desktop");
-        $banner_bg_mobile = get_sub_field("banner_background_mobile");
         $banner_logo = get_sub_field("banner_logo");
         $banner_heading = get_sub_field("banner_heading");
         $banner_subheading = get_sub_field("banner_subheading");
         $banner_desc = get_sub_field("banner_desc");
       endwhile;
     endif; ?>
-    <div class="banner" style="background: url('<?php echo $banner_bg_dekstop[
-      "url"
-    ]; ?>'); background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <img src="<?php echo $banner_logo["url"]; ?>" alt="<?php echo $banner_logo["alt"]; ?>" />
-        <h1><?php echo $banner_heading; ?></h1>
-        <h1><?php echo $banner_subheading; ?></h1>
-        <p><?php echo $banner_desc; ?></p>
+    <div class="banner">
+        <img class="banner_logo" src="<?php echo $banner_logo["url"]; ?>" alt="<?php echo $banner_logo["alt"]; ?>" />
+        <h1 class="banner_heading"><?php echo $banner_heading; ?></h1>
+        <h1 class="banner_heading"><?php echo $banner_subheading; ?></h1>
+        <p class="banner_subheading"><?php echo $banner_desc; ?></p>
     </div>
 
     <!-- About Us -->
