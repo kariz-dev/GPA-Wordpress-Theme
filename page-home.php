@@ -66,10 +66,6 @@ get_header(); ?>
                       </a>
                     </div>
                 <?php endforeach; ?>
-              <!-- </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-pagination"></div> -->
             </div>
         </div>
       <?php wp_reset_postdata(); ?>
@@ -135,26 +131,25 @@ get_header(); ?>
     <?php
       $galleries = get_field('gallery');
       if( $galleries ): ?>
-        <div class="event__carousel">
-            <h2><?php the_field( 'gallery_heading' ); ?></h2>
-            <!-- Slider main container -->
-            <!-- <div class="swiper mySwiper">
-              <div class="swiper-wrapper"> -->
+        <div class="gallery">
+            <h2 class="heading"><?php the_field( 'gallery_heading' ); ?></h2>
                 <?php foreach( $galleries as $post ): // variable must be called $post (IMPORTANT) ?>
                   
                     <?php setup_postdata($post); ?>
                     
-                    <div class="swiper-slide">
-                      <a href="#" target="_blank">
-                        <img src="<?php echo $post->guid; ?>" class="card-img-top" alt="">
-                      </a>
+                    <div class="box-gallery">
+                      <div class="box">
+                        <div class="image">
+                          <img src="<?php echo $post->guid; ?>" alt="">
+                          <div class="content">
+                            <h3>title blog</h3>
+                            <p>lorem ipsum</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
 
                 <?php endforeach; ?>
-              <!-- </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-pagination"></div> -->
             </div>
         </div>
       <?php wp_reset_postdata(); ?>
@@ -165,111 +160,34 @@ get_header(); ?>
     
 
     <!-- Gallery -->
-   <!-- <div class="gallery">
+    <?php
+      $galleries = get_field('gallery');
+      if( $galleries ): ?>
+   <div class="gallery">
     <h1 class="heading">This Is New Heading</h1>
     <div class="box-gallery">
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
+    <?php foreach( $galleries as $post ): // variable must be called $post (IMPORTANT) ?>
+                  
+      <?php setup_postdata($post); ?>
 
       <div class="box">
         <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
+          <img src="<?php echo $post->guid; ?>" alt="" srcset="">
           <div class="content">
             <h3>title blog</h3>
             <p>lorem ipsum</p>
           </div>
         </div>
       </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
+      
+      <?php endforeach; ?>
+     
     </div>
-   </div> -->
-
+    
+   </div>
    <button id="load-more">Load more</button>
+   <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
+
 
 <?php get_footer();

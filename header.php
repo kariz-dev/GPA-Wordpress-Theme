@@ -20,7 +20,8 @@
 
 <a href="#main" class="visually-hidden-focusable"><?php esc_html_e( 'Skip to main content', 'golden-property-awards' ); ?></a>
 
-<div id="wrapper">
+<?php $background_page = get_field('bakcground') ;?>
+<div id="wrapper" style="background: url('<?php echo $background_page["url"]; ?>');">
 	<header>
 		<nav id="header" class="navbar navbar-expand-md <?php echo esc_attr( $navbar_scheme ); if ( isset( $navbar_position ) && 'fixed_top' === $navbar_position ) : echo ' fixed-top'; elseif ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' fixed-bottom'; endif; if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
 			<div class="container">
