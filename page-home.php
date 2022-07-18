@@ -59,6 +59,7 @@ get_header(); ?>
                     <div class="swiper-slide">
                       <a href="<?php the_field( 'testmonial_youtube_link' ); ?>" target="_blank">
                         <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
+                        <span class="iconify" data-icon="bi:play-fill" style="color: white;"></span>
                       </a>
                     </div>
                 <?php endforeach; ?>
@@ -105,32 +106,29 @@ get_header(); ?>
       $events = get_field('event');
       if( $events ): ?>
         <div class="event__carousel">
-            <h2><?php the_field( 'event_heading' ); ?></h2>
-            <!-- Slider main container -->
-            <div class="swiper mySwiper">
-              <div class="swiper-wrapper">
-                <?php foreach( $events as $post ): // variable must be called $post (IMPORTANT) ?>
-                    <?php setup_postdata($post); ?>
-                    <div class="swiper-slide">
-                      <a href="<?php the_field( 'event_youtube_link' ); ?>" target="_blank">
-                        <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
-                      </a>
-                    </div>
-                <?php endforeach; ?>
-              </div>
-              <div class="swiper-pagination"></div>
+          <h2 class="event__heading"><?php the_field( 'event_heading' ); ?></h2>
+          <!-- Slider main container -->
+          <div class="swiper swiper-gallery">
+            <div class="swiper-wrapper">
+              <?php foreach( $events as $post ): // variable must be called $post (IMPORTANT) ?>
+                  <?php setup_postdata($post); ?>
+                  <div class="swiper-slide">
+                    <a href="<?php the_field( 'event_youtube_link' ); ?>" target="_blank">
+                      <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
+                      <div class="event__desc">
+                        <h3 class="event__year"><?php the_field( 'event_years' ); ?></h3>
+                        <h3 class="event__year__desc"><?php the_field( 'event_text_first_line' ); ?></h3>
+                        <h3 class="event__year__desc"><?php the_field( 'event_text_second_line' ); ?></h3>
+                      </div>
+                      <span class="iconify" data-icon="bi:play-fill" style="color: white;"></span>
+                    </a>
+                  </div>
+              <?php endforeach; ?>
             </div>
+          </div>
         </div>
       <?php wp_reset_postdata(); ?>
     <?php endif; ?>
-
-
-    <!-- testing relations galleries -->
-    
-
- 
-    <!-- show the media gallery -->
-    
 
     <!-- Gallery -->
     <?php

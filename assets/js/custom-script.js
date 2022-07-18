@@ -36,6 +36,45 @@ var swiper = new Swiper(".mySwiper", {
   },
 });
 
+// New Swiper
+var swipergallery = new Swiper(".swiper-gallery", {
+  slidesPerGroup: 1,
+  loop: true,
+  // Responsive breakpoints
+  breakpoints: {
+    // when window width is >= 320px
+    320: {
+      slidesPerView: 1,
+      spaceBetween: 6,
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 6,
+    },
+    // when window width is >= 640px
+    640: {
+      slidesPerView: 4,
+      spaceBetween: 6,
+    },
+  },
+  lazy: {
+    loadPrevNext: true,
+  },
+  autoplay: {
+    delay: 5000,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    type: "bullets",
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
+
 // Galley Load More
 let loadMoreBtn = document.querySelector('#load-more');
 let currentItem = 3;

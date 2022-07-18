@@ -18,6 +18,7 @@
 @import './_about.scss';
 @import './_testimonial.scss';
 @import './_article.scss';
+@import './_event.scss';
 
 // 2. Include any default variable overrides here: https://getbootstrap.com/docs/5.0/customize/sass
 // Options
@@ -532,4 +533,24 @@ button.navbar-toggler {
   border: none;
   background-color: #ffffff52;
   text-align: right;
+}
+
+// Icon Play Button
+.swiper {
+  .swiper-wrapper {
+    .swiper-slide {
+      a {
+        img {
+          border-radius: 6px;
+        }
+        .iconify {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 75px;
+        }
+      }
+    }
+  }
 }
