@@ -19,6 +19,8 @@
 @import './_testimonial.scss';
 @import './_article.scss';
 @import './_event.scss';
+@import './_gallery.scss';
+@import './_footer.scss';
 
 // 2. Include any default variable overrides here: https://getbootstrap.com/docs/5.0/customize/sass
 // Options
@@ -193,7 +195,7 @@ img {
 /* Footer */
 
 #footer {
-  background-color: #fff;
+  background-color: #000 !important;
 
   p {
     font-family: 'Montserrat', sans-serif;
@@ -379,149 +381,11 @@ img {
 
 // ================= //
 
-
 h2 {
   color: #ffffff !important;
   text-align: center;
   text-transform: uppercase;
 }
-
-// Load More
-.gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 25px 20px;
-}
-
-.gallery .heading {
-  font-size: 40px;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.gallery .box-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-}
-
-.gallery .box-gallery .box {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  display: none;
-}
-
-.gallery .box-gallery .box:nth-child(1),
-.gallery .box-gallery .box:nth-child(2),
-.gallery .box-gallery .box:nth-child(3) {
-  display: inline-block;
-}
-
-.gallery .box-gallery .box .image {
-  margin-bottom: 20px;
-  overflow: hidden;
-  height: 250px;
-  border-radius: 5px;
-}
-
-.gallery .box-gallery .box .image img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.gallery .box-gallery .box:hover .image img {
-  transform: scale(1.1);
-}
-
-.gallery .box-gallery .box .content h3 {
-  font-size: 20px;
-  color: #fff;
-}
-
-.gallery .box-gallery .box .content p {
-  font-size: 15px;
-  color: #ffffff;
-  line-height: 2;
-  padding: 15px 0;
-}
-
-.gallery .box-gallery .box .content .btn {
-  display: inline-block;
-  padding: 10px 30px;
-  border: 1px solid #fff;
-  color: #fff;
-  font-size: 16px;
-}
-
-.gallery .box-gallery .box .content .btn:hover {
-  background-color: crimson;
-  border-color: crimson;
-  color: #fff;
-}
-
-.gallery .box-gallery .box .content .icons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #fff;
-}
-
-.gallery .box-gallery .box .content .icons span {
-  font-size: 14px;
-  color: #777;
-}
-
-.gallery .box-gallery .box .content .icons span i {
-  color: crimson;
-  padding-right: 5px;
-}
-
-#load-more {
-  margin-top: 20px;
-  display: inline-block;
-  padding: 13px 30px;
-  border: 1px solid #fff;
-  color: #fff;
-  font-size: 16px;
-  background-color: #fff;
-  cursor: pointer;
-  margin: 0 auto;
-}
-
-#load-more:hover {
-  background-color: crimson;
-  border-color: crimson;
-  color: #fff;
-}
-
-@media (max-width: 450px) {
-  .gallery .heading {
-    font-size: 25px;
-  }
-
-  .gallery .box-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery .box-gallery .box .image {
-    height: 200px;
-  }
-
-  .gallery .box-gallery .box .content p {
-    font-size: 12px;
-  }
-
-  .gallery .box-gallery .box .content .icons span {
-    font-size: 12px;
-  }
-}
-
 
 // ================= //
 // hide navbar brand

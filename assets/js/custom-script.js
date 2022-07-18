@@ -76,17 +76,24 @@ var swipergallery = new Swiper(".swiper-gallery", {
 });
 
 // Galley Load More
-let loadMoreBtn = document.querySelector('#load-more');
-let currentItem = 3;
+$(document).ready(function($) {
 
-loadMoreBtn.onclick = () =>{
-   let boxes = [...document.querySelectorAll('.gallery .box-gallery .box')];
-   for (var i = currentItem; i < currentItem + 3; i++){
-      boxes[i].style.display = 'inline-block';
-   }
-   currentItem += 3;
+  // hide items on page load
+  $('.gallery-wrap .gallery-item').hide();
 
-   if(currentItem >= boxes.length){
-      loadMoreBtn.style.display = 'none';
-   }
-}
+  // show first items
+  $('.gallery-wrap .gallery-item').slice(0, 4).show();
+
+  // add click event to load more button
+  $('#load-more').on('click', function(e) {
+    e.preventDefault();
+
+    // show next 4 items
+    $('.gallery-wrap .gallery-item:hidden').slice(0, 4).slideDown();
+
+    // check if there is no hidden item left
+    if ($('.gallery-wrap .gallery-item:hidden').length == 0) {
+      $('#load-more').text('No Content').addClass('noContent');
+    }
+  });
+});

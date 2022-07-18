@@ -134,30 +134,28 @@ get_header(); ?>
     <?php
       $galleries = get_field('gallery');
       if( $galleries ): ?>
-   <div class="gallery">
-    <h2 class="heading"><?php the_field( 'gallery_heading' ); ?></h2>
-    <div class="box-gallery">
-    <?php foreach( $galleries as $post ): // variable must be called $post (IMPORTANT) ?>
-                  
-      <?php setup_postdata($post); ?>
+      <div class="gallery container">
+        <h2 class="gallery__heading"><?php the_field( 'gallery_heading' ); ?></h2>
+        <div class="gallery-wrap row">
+        <?php foreach( $galleries as $post ): // variable must be called $post (IMPORTANT) ?>
+                      
+          <?php setup_postdata($post); ?>
 
-      <div class="box">
-        <div class="image">
-          <img src="<?php echo $post->guid; ?>" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
+          <div class="gallery-item col-6 col-md-3 g-1">
+            <div class="card">
+              <img src="<?php echo $post->guid; ?>" class="card-img-top" alt="...">
+            </div>
           </div>
+          
+          <?php endforeach; ?>
+        
         </div>
+        
       </div>
       
-      <?php endforeach; ?>
-     
-    </div>
-    
-   </div>
-   <button id="load-more">Load more</button>
-   <?php wp_reset_postdata(); ?>
+      <button class="btn" id="load-more">Load more</button>
+          
+      <?php wp_reset_postdata(); ?>
     <?php endif; ?>
 
 

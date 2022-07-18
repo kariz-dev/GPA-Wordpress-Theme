@@ -497,8 +497,8 @@ function golden_property_awards_scripts_loader() {
 
 	// 2. Scripts.
 	
-	wp_enqueue_script( 'customscript', get_theme_file_uri( 'assets/js/custom-script.js' ), array(), $theme_version, true );
-	wp_register_script( 'jQuery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js',array(), true ); // https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js , https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
+	wp_enqueue_script( 'customscript', get_theme_file_uri( 'assets/js/custom-script.js' ), array('jquery'), $theme_version, true );
+	wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js',array(), true ); // https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js , https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
 
 	wp_enqueue_script('jQuery');
 

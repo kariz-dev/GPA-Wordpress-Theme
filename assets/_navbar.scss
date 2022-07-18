@@ -9,7 +9,11 @@
       a {
         color: #fff;
         font-family: 'Montserrat', sans-serif;
-        font-weight: 400 !important;
+        font-weight: 400;
+      }
+
+      a.active {
+        font-weight: 600;
       }
     }
   }
