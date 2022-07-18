@@ -1,3 +1,27 @@
 .testimonial__carousel {
-    margin-top: 5%;
+  margin-top: 5%;
+
+  h2.testimonial_heading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 22px;
+      line-height: 1.4em;
+    }
+  }
+
+  div.swiper-pagination {
+    position: initial;
+
+    .swiper-pagination-bullet {
+      background-color: transparent;
+      border: 1px solid #fff;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: orange;
+      border: 1px solid orange;
+    }
+  }
 }
