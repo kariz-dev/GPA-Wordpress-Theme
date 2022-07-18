@@ -190,7 +190,9 @@ img {
 }
 
 /* Main */
-
+#main {
+  padding-bottom: 30px;
+}
 
 /* Footer */
 
@@ -416,5 +418,20 @@ button.navbar-toggler {
         }
       }
     }
+  }
+}
+
+// Swiper Pagination
+div.swiper-pagination {
+  position: initial;
+
+  .swiper-pagination-bullet {
+    background-color: transparent;
+    border: 1px solid #fff;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #FBAF41;
+    border: 1px solid #FBAF41;
   }
 }

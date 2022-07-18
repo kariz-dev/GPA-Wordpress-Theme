@@ -50,21 +50,22 @@ get_header(); ?>
       $testimonials = get_field('testimonial');
       if( $testimonials ): ?>
         <div class="testimonial__carousel">
-            <h2 class="testimonial_heading"><?php the_field( 'testimonial_heading' ); ?></h2>
-            <!-- Slider main container -->
-            <div class="swiper mySwiper">
-              <div class="swiper-wrapper">
-                <?php foreach( $testimonials as $post ): // variable must be called $post (IMPORTANT) ?>
-                    <?php setup_postdata($post); ?>
-                    <div class="swiper-slide">
-                      <a href="<?php the_field( 'testmonial_youtube_link' ); ?>" target="_blank">
-                        <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
-                        <span class="iconify" data-icon="bi:play-fill" style="color: white;"></span>
-                      </a>
-                    </div>
-                <?php endforeach; ?>
-              </div>
+          <h2 class="testimonial_heading"><?php the_field( 'testimonial_heading' ); ?></h2>
+          <!-- Slider main container -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <?php foreach( $testimonials as $post ): // variable must be called $post (IMPORTANT) ?>
+                <?php setup_postdata($post); ?>
+                <div class="swiper-slide">
+                  <a href="<?php the_field( 'testmonial_youtube_link' ); ?>" target="_blank">
+                    <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
+                    <span class="iconify" data-icon="bi:play-fill" style="color: white;"></span>
+                  </a>
+                </div>
+              <?php endforeach; ?>
+            </div>
             <div class="swiper-pagination"></div>
+          </div>
         </div>
       <?php wp_reset_postdata(); ?>
     <?php endif; ?>
