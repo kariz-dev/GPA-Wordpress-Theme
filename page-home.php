@@ -73,7 +73,7 @@ get_header(); ?>
       $featured_posts = get_field('article');
       if( $featured_posts ): ?>
         <div class="article__carousel">
-            <h2><?php the_field( 'article_heading' ); ?></h2>
+            <h2 class="article__heading"><?php the_field( 'article_heading' ); ?></h2>
             <!-- Slider main container -->
             <div class="swiper mySwiper">
               <div class="swiper-wrapper">
@@ -81,21 +81,24 @@ get_header(); ?>
                     <?php setup_postdata($post); ?>
                     <div class="swiper-slide">
                       <a href="<?php the_field( 'my_articles_link' ); ?>" target="_blank">
-                        <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <p class="card-text"><?php the_title() ;?></p>
-                        </div>
+                        <img class="card-img-top" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title() ;?>">
+                        <p class="card-text">
+                          <?php 
+                            $num_char = 100;
+                            $text = get_the_title();
+                            echo substr($text, 0, $num_char);
+                          ?>
+                          <span class="read-more"><i>Read More</i></span>
+                        </p>
                       </a>
                     </div>
                 <?php endforeach; ?>
               </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
               <div class="swiper-pagination"></div>
             </div>
         </div>
+      <?php wp_reset_postdata(); ?>
     <?php endif; ?>
-    <?php wp_reset_postdata(); ?>
     
     <!-- Event Carousel -->
     <?php
@@ -115,8 +118,6 @@ get_header(); ?>
                     </div>
                 <?php endforeach; ?>
               </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
               <div class="swiper-pagination"></div>
             </div>
         </div>

@@ -1,0 +1,47 @@
+div.article__carousel {
+  margin-top: 5%;
+
+  h2.article__heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 22px;
+      line-height: 1.4em;
+    }
+  }
+
+  .swiper {
+    .swiper-wrapper {
+      .swiper-slide {
+        min-height: 350px;
+        background: #0d0c50;
+        padding: 16px;
+        border-radius: 12px;
+        box-shadow: 6px 5px 5px 1px rgba(0, 0, 0, 1);
+        -webkit-box-shadow: 6px 5px 5px 1px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 6px 5px 5px 1px rgba(0, 0, 0, 1);
+
+        a {
+          img.card-img-top {
+            border-radius: 10px;
+          }
+          p.card-text {
+            color: #fff;
+            font-family: "Montserrat", sans-serif;
+            margin-top: 12px;
+
+            span.read-more {
+              cursor: pointer;
+              color: #808080;
+
+              &:hover {
+                color: #fbaf41;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
