@@ -86,12 +86,15 @@ get_header(); ?>
                         <img class="card-img-top" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title() ;?>">
                         <p class="card-text">
                           <?php 
-                            $num_char = 100;
+                            $num_char = 80;
                             $text = get_the_title();
                             echo substr($text, 0, $num_char);
                           ?>
-                          <span class="read-more"><i>Read More</i></span>
+                          <span class="read-more"><i>...</i></span>
                         </p>
+                        <div class="read-more">
+                          <i>Read More</i>
+                        </div>
                       </a>
                     </div>
                 <?php endforeach; ?>

@@ -31,13 +31,16 @@ div.article__carousel {
             font-family: "Montserrat", sans-serif;
             margin-top: 12px;
 
-            span.read-more {
-              cursor: pointer;
-              color: #808080;
-
-              &:hover {
-                color: #fbaf41;
-              }
+          }
+          div.read-more {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            color: #f8f8f8;
+            font-weight: 600;
+  
+            &:hover {
+              color: #fbaf41;
             }
           }
         }

@@ -11,6 +11,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<p><?php the_field('email_footer'); ?></p>
+						<p class="footer__address" style="font-weight: 600;">Head Office</p>
 						<p><?php the_field('address_footer'); ?></p>
 						<p>Telp. <?php the_field('phone_footer'); ?></p>
 						<?php the_field('menu_footer'); ?>
