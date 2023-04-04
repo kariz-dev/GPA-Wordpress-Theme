@@ -5,6 +5,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<?php wp_head(); ?>
+
+	<!-- styling in html -->
+	<style type="text/css">
+    <?php if (have_rows("banner")):
+      while (have_rows("banner")):
+        the_row();
+        $banner_bg_dekstop = get_sub_field("banner_bg_dekstop");
+        $banner_bg_mobile = get_sub_field("banner_bg_mobile");
+      endwhile;
+    endif; ?>
+  		/* Add your css here */
+		.banner {
+			background: url('<?php echo $banner_bg_dekstop["url"]; ?>'); 
+			background-repeat: no-repeat; 
+			background-size: cover;
+			background-position: center;
+			border-radius: 0 0 20px 20px;
+      height: 500px;
+		}
+
+    @media only screen and (max-width: 600px) {
+      .banner {
+        background: url('<?php echo $banner_bg_mobile["url"]; ?>'); 
+        background-repeat: no-repeat; 
+        background-size: contain; 
+        background-position: center;
+		    height: 80vh;
+      }
+    }
+	</style>
+
 </head>
 
 <?php
@@ -20,7 +51,9 @@
 
 <a href="#main" class="visually-hidden-focusable"><?php esc_html_e( 'Skip to main content', 'golden-property-awards' ); ?></a>
 
-<div id="wrapper">
+<?php $background_page = get_field('bakcground') ;?>
+<div id="wrapper" 
+	style="background: url('<?php echo $background_page["url"]; ?>'); background-size: 100%;">
 	<header>
 		<nav id="header" class="navbar navbar-expand-md <?php echo esc_attr( $navbar_scheme ); if ( isset( $navbar_position ) && 'fixed_top' === $navbar_position ) : echo ' fixed-top'; elseif ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' fixed-bottom'; endif; if ( is_home() || is_front_page() ) : echo ' home'; endif; ?>">
 			<div class="container">
@@ -60,7 +93,7 @@
 							<form class="search-form my-2 my-lg-0" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 								<div class="input-group">
 									<input type="text" name="s" class="form-control" placeholder="<?php esc_attr_e( 'Search', 'golden-property-awards' ); ?>" title="<?php esc_attr_e( 'Search', 'golden-property-awards' ); ?>" />
-									<button type="submit" name="submit" class="btn btn-outline-secondary"><?php esc_html_e( 'Search', 'golden-property-awards' ); ?></button>
+									<button type="submit" name="submit" class="btn btn-outline-secondary"><?php esc_html_e( '', 'golden-property-awards' ); ?><span class="iconify" data-icon="akar-icons:search"></span></button>
 								</div>
 							</form>
 					<?php
@@ -72,12 +105,4 @@
 	</header>
 
 	<main id="main" class="container"<?php if ( isset( $navbar_position ) && 'fixed_top' === $navbar_position ) : echo ' style="padding-top: 100px;"'; elseif ( isset( $navbar_position ) && 'fixed_bottom' === $navbar_position ) : echo ' style="padding-bottom: 100px;"'; endif; ?>>
-		<?php
-			// If Single or Archive (Category, Tag, Author or a Date based page).
-			if ( is_single() || is_archive() ) :
-		?>
-			<div class="row">
-				<div class="col-md-8 col-sm-12">
-		<?php
-			endif;
-		?>
+		

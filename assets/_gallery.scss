@@ -1,0 +1,43 @@
+.gallery {
+  margin-top: 5%;
+  margin-bottom: 20px;
+
+  h2.gallery__heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 22px;
+      line-height: 1.4em;
+    }
+  }
+
+  .gallery-wrap {
+    .gallery-item {
+      .card {
+        border: none;
+      }
+    }
+  }
+}
+
+button#load-more {
+  background: transparent;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  color: #fff;
+  margin: 0 auto;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  text-transform: uppercase;
+  padding-left: 35px;
+  padding-right: 35px;
+  text-align: center;
+  display: block;
+}
+
+button.noContent {
+  border: none !important;
+  color: gray !important;
+}

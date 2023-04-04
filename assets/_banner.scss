@@ -1,14 +1,46 @@
 // Banner Style
 .banner {
   text-align: center;
-  margin: 20px auto;
-  padding: 20px;
-  img {
-    width: 250px;
-    height: auto;
-  }
-  h1 {
-    text-transform: uppercase;
+  margin-top: -50px;
+  padding-bottom: 12px;
+  overflow: hidden;
 
+  @media only screen and (max-width: 600px){
+    margin-top: -90px;
+    padding-top: 100px;
+  }
+
+  img.banner_logo {
+    margin-top: -50px;
+    margin-bottom: -50px;
+    width: 400px ;
+    height: auto;
+
+    @media only screen and (max-width: 600px) {
+      width: 300px;
+      margin-bottom: -20px;
+      margin-top: -10px;
+    }
+  }
+
+  h1.banner_heading {
+    font-weight: 600;
+    font-size: 38px;
+    text-transform: uppercase;
+    color: #ffffff !important;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 24px;
+      line-height: 1.4em;
+      margin-bottom: 0px;
+    }
+  }
+
+  p.banner_subheading {
+    font-weight: 400;
+    font-size: 16px;
+    color: #ffffff !important;
   }
 }
+
+

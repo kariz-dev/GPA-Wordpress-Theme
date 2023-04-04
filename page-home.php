@@ -11,19 +11,17 @@ get_header(); ?>
     <?php if (have_rows("banner")):
       while (have_rows("banner")):
         the_row();
-        $banner_bg_dekstop = get_sub_field("banner_bg_dekstop");
-        $banner_bg_mobile = get_sub_field("banner_bg_mobile");
-        $banner_image = get_sub_field("banner_image");
-        $banner_content = get_sub_field("banner_content");
+        $banner_logo = get_sub_field("banner_logo");
+        $banner_heading = get_sub_field("banner_heading");
+        $banner_subheading = get_sub_field("banner_subheading");
+        $banner_desc = get_sub_field("banner_desc");
       endwhile;
     endif; ?>
-    <div class="banner" style="background: url('<?php echo $banner_bg_dekstop[
-      "url"
-    ]; ?>'); background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <img src="<?php echo $banner_image["url"]; ?>" alt="" />
-        <h1><?php echo $banner_content["banner_content_heading"]; ?></h1>
-        <h1><?php echo $banner_content["banner_content_subheading"]; ?></h1>
-        <p><?php echo $banner_content["banner_content_desc"]; ?></p>
+    <div class="banner">
+        <img class="banner_logo" src="<?php echo $banner_logo["url"]; ?>" alt="<?php echo $banner_logo["alt"]; ?>" />
+        <h1 class="banner_heading"><?php echo $banner_heading; ?></h1>
+        <h1 class="banner_heading"><?php echo $banner_subheading; ?></h1>
+        <p class="banner_subheading"><?php echo $banner_desc; ?></p>
     </div>
 
     <!-- About Us -->
@@ -36,305 +34,133 @@ get_header(); ?>
       endwhile;
     endif; ?>
     <div class="about">
-        <h1><?php echo $about_heading; ?></h1>
-        <div class="about__content row">
-            <div class="about__content__heading col">
-                <p><?php echo $about_desc; ?></p>
-            </div>
-            <div class="about__content__image col">
-                <img src="<?php echo $about_image["url"]; ?>" alt="" />
-            </div>
+      <h2 class="about__heading"><?php echo $about_heading; ?></h2>
+      <div class="about__content row">
+        <div class="about__content__desc col order-last order-md-first">
+          <p><?php echo $about_desc; ?></p>
         </div>
+        <div class="about__content__image col order-first order-md-last">
+          <img src="<?php echo $about_image["url"]; ?>" alt="<?php echo $about_image['alt'] ;?>" />
+        </div>
+      </div>
     </div>
 
     <!-- Testimonial Carousel -->
-    <?php if (have_rows("testimonial")):
-      while (have_rows("testimonial")):
-        the_row();
-        $testimonial_heading = get_sub_field("testimonial_heading");
-        $testimonial_content = get_sub_field("testimonial_content");
-      endwhile;
-    endif; ?>
-
-    <div class="testimonial__carousel">
-        <h2><?php echo $testimonial_heading; ?></h2>
-        <!-- Slider main container -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+    <?php
+      $testimonials = get_field('testimonial');
+      if( $testimonials ): ?>
+        <div class="testimonial__carousel">
+          <h2 class="testimonial_heading"><?php the_field( 'testimonial_heading' ); ?></h2>
+          <!-- Slider main container -->
+          <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <?php foreach( $testimonials as $post ): // variable must be called $post (IMPORTANT) ?>
+                <?php setup_postdata($post); ?>
+                <div class="swiper-slide">
+                  <a href="<?php the_field( 'testmonial_youtube_link' ); ?>" target="_blank">
+                    <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
+                    <span class="iconify" data-icon="bi:play-fill" style="color: white;"></span>
+                  </a>
+                </div>
+              <?php endforeach; ?>
             </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
+            <div class="swiper-pagination"></div>
           </div>
-
-          <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-          
-        <div class="swiper-pagination"></div>
         </div>
-
-        
-
-    </div>
+      <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
 
     <!-- Article Carousel -->
     <?php
-    $featured_posts = get_field('article');
-    if( $featured_posts ): ?>
+      $featured_posts = get_field('article');
+      if( $featured_posts ): ?>
         <div class="article__carousel">
-            <h2><?php the_field( 'article_heading' ); ?></h2>
+            <h2 class="article__heading"><?php the_field( 'article_heading' ); ?></h2>
             <!-- Slider main container -->
             <div class="swiper mySwiper">
               <div class="swiper-wrapper">
                 <?php foreach( $featured_posts as $post ): // variable must be called $post (IMPORTANT) ?>
                     <?php setup_postdata($post); ?>
                     <div class="swiper-slide">
-                      <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="...">
-                      <div class="card-body">
-                        <p class="card-text"><?php the_title() ;?></p>
-                        <a href="<?php the_field( 'my_articles' ); ?>" target="_blank" class="btn btn-primary">Read More</a>
-                      </div>
+                      <a href="<?php the_field( 'my_articles_link' ); ?>" target="_blank">
+                        <img class="card-img-top" src="<?php the_post_thumbnail_url(); ?>" alt="<?php the_title() ;?>">
+                        <p class="card-text">
+                          <?php 
+                            $num_char = 80;
+                            $text = get_the_title();
+                            echo substr($text, 0, $num_char);
+                          ?>
+                          <span class="read-more"><i>...</i></span>
+                        </p>
+                        <div class="read-more">
+                          <i>Read More</i>
+                        </div>
+                      </a>
                     </div>
                 <?php endforeach; ?>
               </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
               <div class="swiper-pagination"></div>
             </div>
         </div>
+      <?php wp_reset_postdata(); ?>
     <?php endif; ?>
-
-
-    <div class="article__carousel">
-        <h2><?php echo $testimonial_heading; ?></h2>
-                         
-        <!-- Slider main container -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-            
-          </div>
-        
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          
-          <div class="swiper-pagination"></div>
-        </div>
-    </div>
-
     
     <!-- Event Carousel -->
-    <div class="event__carousel">
-        <h2><?php echo $testimonial_heading; ?></h2>
-                         
-        <!-- Slider main container -->
-        <div class="swiper mySwiper">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
+    <?php
+      $events = get_field('event');
+      if( $events ): ?>
+        <div class="event__carousel">
+          <h2 class="event__heading"><?php the_field( 'event_heading' ); ?></h2>
+          <!-- Slider main container -->
+          <div class="swiper swiper-gallery">
+            <div class="swiper-wrapper">
+              <?php foreach( $events as $post ): // variable must be called $post (IMPORTANT) ?>
+                  <?php setup_postdata($post); ?>
+                  <div class="swiper-slide">
+                    <a href="<?php the_field( 'event_youtube_link' ); ?>" target="_blank">
+                      <img src="<?php the_post_thumbnail_url(); ?>" class="card-img-top" alt="">
+                      <div class="event__desc">
+                        <h3 class="event__year"><?php the_field( 'event_years' ); ?></h3>
+                        <h3 class="event__year__desc"><?php the_field( 'event_text_first_line' ); ?></h3>
+                        <h3 class="event__year__desc"><?php the_field( 'event_text_second_line' ); ?></h3>
+                      </div>
+                      <span class="iconify" data-icon="bi:play-fill" style="color: white;"></span>
+                    </a>
+                  </div>
+              <?php endforeach; ?>
             </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-
-            <div class="swiper-slide">
-              <img src="https://codingyaar.com/wp-content/uploads/multiple-items-carousel-slide-1-card-1.jpg?ezimgfmt=rs:960x639/rscb1/ng:webp/ngcb1" class="card-img-top" alt="...">
-            </div>
-            
           </div>
-        
-          <div class="swiper-button-next"></div>
-          <div class="swiper-button-prev"></div>
-          
-          <div class="swiper-pagination"></div>
         </div>
-    </div>
-
+      <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
 
     <!-- Gallery -->
-    <div class="gallery">
-        Gallery Loadmore
-        <a href="#" id="loadMore">Load More</a>
-    </div>
+    <?php
+      $galleries = get_field('gallery');
+      if( $galleries ): ?>
+      <div class="gallery container">
+        <h2 class="gallery__heading"><?php the_field( 'gallery_heading' ); ?></h2>
+        <div class="gallery-wrap row">
+        <?php foreach( $galleries as $post ): // variable must be called $post (IMPORTANT) ?>
+                      
+          <?php setup_postdata($post); ?>
 
-    <!-- test Load More -->
-   <div class="gallery">
-    <h1 class="heading">This Is New Heading</h1>
-    <div class="box-gallery">
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
+          <div class="gallery-item col-6 col-md-3 g-1">
+            <div class="card">
+              <img src="<?php echo $post->guid; ?>" class="card-img-top" alt="...">
+            </div>
           </div>
+          
+          <?php endforeach; ?>
+        
         </div>
+        
       </div>
+      
+      <button class="btn" id="load-more">Load more</button>
+          
+      <?php wp_reset_postdata(); ?>
+    <?php endif; ?>
 
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="image">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" srcset="">
-          <div class="content">
-            <h3>title blog</h3>
-            <p>lorem ipsum</p>
-          </div>
-        </div>
-      </div>
-    </div>
-   </div>
-
-   <button id="load-more">Load more</button>
 
 <?php get_footer();

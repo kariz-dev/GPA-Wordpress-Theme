@@ -496,12 +496,19 @@ function golden_property_awards_scripts_loader() {
 	}
 
 	// 2. Scripts.
-	wp_enqueue_script( 'mainjs', get_theme_file_uri( 'assets/js/main.bundle.js' ), array(), $theme_version, true );
-	wp_enqueue_script( 'customscript', get_theme_file_uri( 'assets/js/custom-script.js' ), array(), $theme_version, true );
-	wp_register_script( 'jQuery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js', true ); // https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js , https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
+	
+	wp_enqueue_script( 'customscript', get_theme_file_uri( 'assets/js/custom-script.js' ), array('jquery'), $theme_version, true );
+	wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js',array(), true ); // https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js , https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
+
 	wp_enqueue_script('jQuery');
+
 	// Swiper Js Carousel
 	wp_enqueue_script( 'swiper-js', 'https://unpkg.com/swiper@8/swiper-bundle.min.js',array(), true);
+
+	wp_enqueue_script( 'iconify', 'https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js',array(), true);
+
+	wp_enqueue_script( 'main', get_theme_file_uri( 'assets/js/main.bundle.js' ), array(), $theme_version, true );
+		
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );

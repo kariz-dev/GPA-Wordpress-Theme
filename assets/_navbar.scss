@@ -7,7 +7,31 @@
   ul {
     li {
       a {
-        color: #fff !important;
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+      }
+
+      a.active {
+        font-weight: 600;
+      }
+    }
+  }
+
+  form.search-form {
+    div.input-group {
+      input.form-control {
+        border-color: #fff !important;
+        border-width: 1px 0px 1px 1px !important;
+        border-radius: 50px 0 0 50px;
+        background-color: #000000;
+        color: #fff;
+      }
+
+      button.btn {
+        border-color: #fff !important;
+        border-width: 1px 1px 1px 0px !important;
+        border-radius: 0 50px 50px 0;
       }
     }
   }

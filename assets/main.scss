@@ -6,12 +6,21 @@
 
 //@import "../node_modules/bootstrap/scss/bootstrap";
 
+// Font Family
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
 // 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
 @import "../node_modules/bootstrap/scss/functions";
 
 // @import Component
-@import './navbar';
+@import './_navbar.scss';
 @import './_banner.scss';
+@import './_about.scss';
+@import './_testimonial.scss';
+@import './_article.scss';
+@import './_event.scss';
+@import './_gallery.scss';
+@import './_footer.scss';
 
 // 2. Include any default variable overrides here: https://getbootstrap.com/docs/5.0/customize/sass
 // Options
@@ -56,12 +65,12 @@ $teal: #20c997;
 $cyan: #0dcaf0;
 
 // Fonts
-$font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
-  "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-$font-family-serif: Georgia, "Times New Roman", Times, serif;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-  "Liberation Mono", "Courier New", monospace;
-$font-family-base: $font-family-sans-serif;
+// $font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+//   "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+// $font-family-serif: Georgia, "Times New Roman", Times, serif;
+// $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+//   "Liberation Mono", "Courier New", monospace;
+// $font-family-base: $font-family-sans-serif;
 
 $link-decoration: none;
 
@@ -181,24 +190,25 @@ img {
 }
 
 /* Main */
-
 #main {
-  margin-top: $spacer;
+  padding-bottom: 30px;
 }
 
 /* Footer */
 
 #footer {
-  background-color: #fff;
+  background-color: #000 !important;
 
   p {
+    font-family: 'Montserrat', sans-serif;
     margin-top: 10px;
     text-align: center;
-    color: rgb(122, 35, 35);
+    color: #ffffff;
   }
 
   .menu-item {
     a {
+      font-family: 'Montserrat', sans-serif;
       &[aria-current="page"] {
         color: $link-hover-color;
       }
@@ -227,8 +237,10 @@ img {
 .author-info {
   margin: 40px 0;
 
+  h1,
   h2,
   h3 {
+    font-family: 'Montserrat', sans-serif;
     margin-top: 0;
   }
 }
@@ -371,169 +383,55 @@ img {
 
 // ================= //
 
-
-
-
-// About Style
-.about {
-  h1 {
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  &__content {
-    &__heading {
-      p {
-        text-align: right;
-      }
-    }
-
-    &__image {
-      img {
-        width: 350px;
-        height: auto;
-      }
-    }
-  }
-}
-
 h2 {
+  color: #ffffff !important;
   text-align: center;
   text-transform: uppercase;
 }
 
-// Load More
-.gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 25px 20px;
-}
-
-.gallery .heading {
-  font-size: 40px;
-  margin-bottom: 20px;
-  color: #334;
-}
-
-.gallery .box-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-}
-
-.gallery .box-gallery .box {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+// ================= //
+// hide navbar brand
+.navbar-brand {
   display: none;
 }
 
-.gallery .box-gallery .box:nth-child(1),
-.gallery .box-gallery .box:nth-child(2),
-.gallery .box-gallery .box:nth-child(3) {
-  display: inline-block;
+button.navbar-toggler {
+  border: none;
+  background-color: #ffffff52;
+  text-align: right;
 }
 
-.gallery .box-gallery .box .image {
-  margin-bottom: 20px;
-  overflow: hidden;
-  height: 250px;
-  border-radius: 5px;
+// Icon Play Button
+.swiper {
+  .swiper-wrapper {
+    .swiper-slide {
+      a {
+        img {
+          border-radius: 6px;
+        }
+        .iconify {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 75px;
+        }
+      }
+    }
+  }
 }
 
-.gallery .box-gallery .box .image img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
+// Swiper Pagination
+div.swiper-pagination {
+  position: initial;
 
-.gallery .box-gallery .box:hover .image img {
-  transform: scale(1.1);
-}
-
-.gallery .box-gallery .box .content h3 {
-  font-size: 20px;
-  color: #334;
-}
-
-.gallery .box-gallery .box .content p {
-  font-size: 15px;
-  color: #777;
-  line-height: 2;
-  padding: 15px 0;
-}
-
-.gallery .box-gallery .box .content .btn {
-  display: inline-block;
-  padding: 10px 30px;
-  border: 1px solid #334;
-  color: #334;
-  font-size: 16px;
-}
-
-.gallery .box-gallery .box .content .btn:hover {
-  background-color: crimson;
-  border-color: crimson;
-  color: #fff;
-}
-
-.gallery .box-gallery .box .content .icons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #334;
-}
-
-.gallery .box-gallery .box .content .icons span {
-  font-size: 14px;
-  color: #777;
-}
-
-.gallery .box-gallery .box .content .icons span i {
-  color: crimson;
-  padding-right: 5px;
-}
-
-#load-more {
-  margin-top: 20px;
-  display: inline-block;
-  padding: 13px 30px;
-  border: 1px solid #334;
-  color: #334;
-  font-size: 16px;
-  background-color: #fff;
-  cursor: pointer;
-  margin: 0 auto;
-}
-
-#load-more:hover {
-  background-color: crimson;
-  border-color: crimson;
-  color: #fff;
-}
-
-@media (max-width: 450px) {
-  .gallery .heading {
-    font-size: 25px;
+  .swiper-pagination-bullet {
+    background-color: transparent;
+    border: 2px solid #fff;
   }
 
-  .gallery .box-gallery {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery .box-gallery .box .image {
-    height: 200px;
-  }
-
-  .gallery .box-gallery .box .content p {
-    font-size: 12px;
-  }
-
-  .gallery .box-gallery .box .content .icons span {
-    font-size: 12px;
+  .swiper-pagination-bullet-active {
+    background-color: #FBAF41;
+    border: 1px solid #FBAF41;
   }
 }

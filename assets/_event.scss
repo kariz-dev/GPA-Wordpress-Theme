@@ -1,0 +1,43 @@
+.event__carousel {
+  margin-top: 5%;
+
+  h2.event__heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+
+    @media only screen and (max-width: 600px) {
+      font-size: 22px;
+      line-height: 1.4em;
+    }
+  }
+
+  .swiper {
+    .swiper-wrapper {
+      .swiper-slide {
+        a {
+          .event__desc {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+
+            h3.event__year {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 600;
+              font-size: 32px;
+              color: #fff;
+            }
+
+            h3.event__year__desc {
+              font-family: "Montserrat", sans-serif;
+              font-weight: 400;
+              font-size: 24px;
+              color: #fff;
+              text-transform: uppercase;
+              line-height: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
